@@ -1,0 +1,79 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item title is-1" href="https://bulma.io">
+      Paw Finder
+    </a>
+
+    <button class="button navbar-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="columns">
+  <div class="column is-one-fifth">
+    <div class="panel">
+      <div class="panel-heading">
+        Narrow your search
+      </div>
+      <div class="panel-block">
+        <form>
+          <div class="field">
+            <label class="label">Type</label>
+            <div class="control">
+              <div class="buttons has-addons">
+                <span class="button"><img src='/assets/dog-color.svg' width="40" /></span>
+                <span class="button"><img src='/assets/cat-color.svg' width="30" /></span>
+                <span class="button">Both</span>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Sex</label>
+            <div class="control">
+              <div class="buttons has-addons">
+                <span class="button">Male</span>
+                <span class="button">Female</span>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Found location within</label>
+            <div class="control">
+              <div class="select">
+                <select>
+                  <option>5 miles</option>
+                  <option>10 miles</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field is-grouped is-grouped-right">
+            <p class="control">
+              <a class="button is-primary">
+                Search
+              </a>
+            </p>
+            <p class="control">
+              <a class="button is-light">
+                Clear
+              </a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <agm-map [latitude]="lat" [longitude]="long">
+      <agm-marker [latitude]="lat" [longitude]="long" [iconUrl]="'/assets/dog-color.svg'"></agm-marker>
+    </agm-map>
+  </div>
+
+  <div class="column is-one-quarter">
+    <pets-list></pets-list>
+  </div>
+</div>
