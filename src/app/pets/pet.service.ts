@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class PetService {
   constructor(protected http: HttpClient) {}
-  public atxAACUrl = 'https://data.austintexas.gov/resource/hye6-gvq2.json';
+  public atxAACUrl = 'https://data.austintexas.gov/resource/hye6-gvq2.json?$limit=5&$offset=0';
 
   private handleError (error: any) {
     let errMsg = error.message || 'Server error';

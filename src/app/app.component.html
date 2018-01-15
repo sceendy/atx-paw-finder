@@ -68,12 +68,10 @@
   </div>
   
   <div class="column">
-    <agm-map [latitude]="lat" [longitude]="long">
-      <agm-marker [latitude]="lat" [longitude]="long" [iconUrl]="'/assets/dog-color.svg'"></agm-marker>
-    </agm-map>
+    <map *ngIf="locations" [markers]="locations">Loading Map...</map>
   </div>
 
   <div class="column is-one-quarter">
-    <pets-list></pets-list>
+    <pets-list [pets]="pets"></pets-list>
   </div>
 </div>

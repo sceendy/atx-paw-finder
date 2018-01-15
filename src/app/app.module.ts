@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PetsListComponent } from './pets/pets-list.component';
+import { MapComponent } from './map/map.component';
 
 import { PetService } from './pets/pet.service';
 
@@ -14,6 +15,7 @@ import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
+    MapComponent,
     PetsListComponent
   ],
   imports: [
