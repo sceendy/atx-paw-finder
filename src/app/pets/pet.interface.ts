@@ -1,8 +1,9 @@
-export interface Pet {
+export interface IPet {
   age: string,
   animal_id: string;
   color: string,
   intake_date: string;
+  looks_like: string;
   type: string;
   location: {
     latitude: string,

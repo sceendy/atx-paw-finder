@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'map',
@@ -8,8 +8,10 @@ import { Component, Input } from '@angular/core';
       *ngFor="let m of markers; let i = index"
       [latitude]="m.latitude"
       [longitude]="m.longitude"
-      [iconUrl]="m.typeUrl">
+      [iconUrl]="m.typeUrl"
+      (markerClick)="getPet(m.id)">
     </agm-marker>
+    <agm-circle [latitude]="lat" [longitude]="long" [fillColor]="tomato"></agm-circle>
   </agm-map>
   `
 })
@@ -20,6 +22,11 @@ export class MapComponent {
 
   @Input() markers: Array<any>;
   @Input() selected: any;
+  @Output() onPetSelected = new EventEmitter<number>();
 
   constructor() {}
+
+  getPet(id: number) {
+    this.onPetSelected.emit(id);
+  }
 }

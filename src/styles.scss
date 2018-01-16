@@ -1,9 +1,22 @@
+// VARIABLES
 :root {
   --teal: #00d1b2;
 }
 
+// BASE 
 html, body { height: 100vh; }
 agm-map { height: 85vh; }
+
+// COMPONENTS 
+.navbar__logo {
+  max-height: 2.75rem; 
+  margin-right: 10px;
+}
+
+.is-96x72 {
+  height: 72px;
+  width: 96px;
+}
 
 .map__list { height: 85vh; }
 
@@ -12,21 +25,33 @@ agm-map { height: 85vh; }
   cursor: pointer; 
 }
 
-.block--full { width: 100%; }
 
+// UTILITIES
+.block--full { width: 100%; }
+.radio--selected { background-color: #ffdd57; }
+.u--text-uppercase { text-transform: uppercase; }
+
+.floating--centered {
+  position: absolute;
+  top: 50vh;
+  z-index: 1;
+  max-width: 49vw;
+}
+
+// VENDOR OVERRIDES
 .pagination--bulma /deep/ .ngx-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   li {
     border-radius: 25%;
+    display: inherit;
   }
   .current {
     background: var(--teal);
   }
   .pagination-previous, .pagination-next {
     border: 0;
+    order: 0;
   }
-}
-
-.is-96x72 {
-  height: 72px;
-  width: 96px;
 }

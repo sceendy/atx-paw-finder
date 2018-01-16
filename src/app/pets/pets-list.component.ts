@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { Pet } from './pet.interface';
+import { IPet } from './pet.interface';
 import { PetService } from './pet.service';
 
 @Component({
@@ -53,7 +53,7 @@ import { PetService } from './pet.service';
 export class PetsListComponent {
   selectedId: number;
   p: number = 1;
-  @Input() pets: Array<Pet>;
+  @Input() pets: Array<IPet>;
   @Output() onSelected = new EventEmitter<number>();
 
   constructor(private petService: PetService) {}
