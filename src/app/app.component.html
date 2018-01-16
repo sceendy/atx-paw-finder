@@ -1,6 +1,6 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item title is-3 u--text-uppercase" href="/">
+    <a class="navbar-item title is-3 u--text-uppercase" href="./">
       <img src="./assets/logo.svg" class="navbar__logo"/> ATX Paw Finder
     </a>
   </div>
@@ -25,12 +25,12 @@
                 <span class="button is-medium" 
                   (click)="updateType('Dog')"
                   [ngClass]="{'radio--selected': this.filterForm.get('type').value == 'Dog'}">
-                  <img src='./assets/dog-color.svg' width="50" />
+                  <img src="./assets/dog-color.svg" width="50" />
                 </span>
                 <span class="button is-medium" 
                   (click)="updateType('Cat')"
                   [ngClass]="{'radio--selected': this.filterForm.get('type').value == 'Cat'}">
-                  <img src='./assets/cat-color.svg' width="40" />
+                  <img src="./assets/cat-color.svg" width="40" />
                 </span>
                 <span class="button is-medium" 
                   (click)="updateType('')"
