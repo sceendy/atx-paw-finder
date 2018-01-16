@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
         /* TODO: get pet looks_like string to appear as label on marker hover */
         latitude: Number(pet.location.latitude), 
         longitude: Number(pet.location.longitude),
-        typeUrl: pet.type == 'Dog' ? '/assets/dog-color.svg' : '/assets/cat-color.svg'
+        typeUrl: pet.type == 'Dog' ? '/assets/dog-shadow.svg' : '/assets/cat-shadow.svg'
       })
     });
   }
