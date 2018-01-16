@@ -7,6 +7,11 @@ import { PetService } from './pet.service';
   selector: 'pets-list',
   template: `
   <div class="map__list">
+    <div *ngIf="pets.length === 0" class="card">
+      <div class="card-content">
+        Whoops! There are no pets that meet that search criteria.
+      </div>
+    </div>
     <div class="card" 
       *ngFor="let pet of pets | paginate: { itemsPerPage: 4, currentPage: p };" 
       (mouseover)="highlightPetLocation($event, pet.animal_id)">
@@ -40,7 +45,8 @@ import { PetService } from './pet.service';
         </div>
       </div>
     </div>
-    <pagination-controls 
+    <pagination-controls
+      *ngIf="pets.length > 4"
       (pageChange)="p = $event" 
       class="pagination--bulma"
       previousLabel=""

@@ -43,10 +43,9 @@ export class AppComponent implements OnInit {
       this.filter = (() => {
         let values = Object.values(this.filterForm.value).filter(v => v.length > 0).map(v => v.replace(/\+/g, ' '));
         if (values.length >= 1) {
-          values
+          return values
             .reverse()
-            .join(',');
-          return values;
+            .join(', ');
         } else {
           return 'all';
         }
@@ -56,8 +55,8 @@ export class AppComponent implements OnInit {
   }
 
   setMapMarkers() {
+    this.loading = 0;
     this.locations = this.pets.map((pet: IPet) => {
-      this.loading = 0;
       return ({ 
         id: pet.animal_id, 
         /* TODO: get pet looks_like string to appear as label on marker hover */
