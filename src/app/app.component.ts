@@ -52,7 +52,6 @@ export class AppComponent implements OnInit {
         }
       })();
       this.setMapMarkers();
-      this.clearFilter();
     });
   }
 
@@ -79,6 +78,7 @@ export class AppComponent implements OnInit {
       'sex': '',
       'animal_id': ''
     });
+    this.renderPetList();
   }
 
   updateType(type: string) {
