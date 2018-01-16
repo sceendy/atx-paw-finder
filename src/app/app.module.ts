@@ -10,6 +10,7 @@ import { MapComponent } from './map/map.component';
 import { PetService } from './pets/pet.service';
 
 // VENDOR
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule,
     HttpModule,
     HttpClientModule,
+    NgxPaginationModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyADXe5_gSopqsoAva8mtLwSP9a7xB45dvk'
     })

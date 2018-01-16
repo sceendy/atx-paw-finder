@@ -9,4 +9,5 @@ export interface Pet {
     longitude: string,
     human_address: string // api sends it as string, should be object though
   };
+  show: boolean;
 }

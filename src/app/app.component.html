@@ -1,14 +1,8 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item title is-1" href="https://bulma.io">
-      Paw Finder
+    <a class="navbar-item title is-2" href="https://bulma.io">
+      <img src="/assets/logo.svg" style="max-height: 2.75rem; margin-right: 10px;"/> ATX Paw Finder
     </a>
-
-    <button class="button navbar-burger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
   </div>
 </nav>
 
@@ -19,31 +13,37 @@
         Narrow your search
       </div>
       <div class="panel-block">
-        <form>
+        <form class="block--full">
           <div class="field">
             <label class="label">Type</label>
             <div class="control">
               <div class="buttons has-addons">
-                <span class="button"><img src='/assets/dog-color.svg' width="40" /></span>
-                <span class="button"><img src='/assets/cat-color.svg' width="30" /></span>
-                <span class="button">Both</span>
+                <span class="button is-medium"><img src='/assets/dog-color.svg' width="50" /></span>
+                <span class="button is-medium"><img src='/assets/cat-color.svg' width="40" /></span>
+                <span class="button is-medium">All</span>
               </div>
             </div>
           </div>
           <div class="field">
             <label class="label">Sex</label>
             <div class="control">
-              <div class="buttons has-addons">
-                <span class="button">Male</span>
-                <span class="button">Female</span>
+              <div class="select is-medium block--full">
+                <select class="block--full">
+                  <option>All</option>
+                  <option>Neutered Male</option>
+                  <option>Spayed Female</option>
+                  <option>Intact Male</option>
+                  <option>Intact Female</option>
+                </select>
               </div>
             </div>
           </div>
           <div class="field">
-            <label class="label">Found location within</label>
+            <label class="label">Distance found from me</label>
             <div class="control">
-              <div class="select">
-                <select>
+              <div class="select is-medium block--full">
+                <select class="block--full">
+                  <option>Any distance</option>
                   <option>5 miles</option>
                   <option>10 miles</option>
                 </select>
@@ -52,12 +52,12 @@
           </div>
           <div class="field is-grouped is-grouped-right">
             <p class="control">
-              <a class="button is-primary">
+              <a class="button is-primary is-medium">
                 Search
               </a>
             </p>
             <p class="control">
-              <a class="button is-light">
+              <a class="button is-light is-medium">
                 Clear
               </a>
             </p>
@@ -65,13 +65,16 @@
         </form>
       </div>
     </div>
+    <p class="has-text-centered is-hidden-touch">&hearts; Made by <a href="https://www.sceendy.com" target="_blank" rel="noopener">Cindy</a></p>
   </div>
   
-  <div class="column">
-    <map *ngIf="locations" [markers]="locations">Loading Map...</map>
+  <div class="column is-half">
+    <map *ngIf="locations" [markers]="locations" [selected]="selectedPet">Loading Map...</map>
   </div>
 
-  <div class="column is-one-quarter">
-    <pets-list [pets]="pets"></pets-list>
+  <div class="column">
+    <pets-list [pets]="pets" (onSelected)="onSelected($event)"></pets-list>
   </div>
 </div>
+
+<p class="has-text-centered is-hidden-tablet">&hearts; Made by <a href="https://www.sceendy.com" target="_blank" rel="noopener">Cindy</a></p>

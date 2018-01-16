@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'map',
@@ -13,15 +13,13 @@ import { Component, OnInit, Input } from '@angular/core';
   </agm-map>
   `
 })
-export class MapComponent implements OnInit{
-  private lat = 30.307182;
-  private long = -97.755996;
-  private zoom = 11;
-  @Input() markers: Array<any>;
-  
-  constructor() {}
+export class MapComponent {
+  private lat = 30.307182; // atx
+  private long = -97.755996; // atx
+  private zoom = 10;
 
-  ngOnInit() {
-    console.log(this.markers);
-  }
+  @Input() markers: Array<any>;
+  @Input() selected: any;
+
+  constructor() {}
 }

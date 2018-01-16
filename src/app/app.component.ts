@@ -11,6 +11,7 @@ import { PetService } from './pets/pet.service';
 export class AppComponent implements OnInit {
   title = 'Paw Finder';
   pets: Array<Object>;
+  selectedPet: any;
   locations: Array<any>;
 
   constructor(public petService: PetService) {}
@@ -32,5 +33,9 @@ export class AppComponent implements OnInit {
         typeUrl: pet.type == 'Dog' ? '/assets/dog-color.svg' : '/assets/cat-color.svg'
       })
     });
+  }
+
+  onSelected(id: any) {
+    this.selectedPet = id;
   }
 }

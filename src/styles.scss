@@ -1,4 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --teal: #00d1b2;
+}
 
 html, body { height: 100vh; }
 agm-map { height: 85vh; }
+
+.map__list { height: 85vh; }
+
+.actionable__text:hover {
+  color: #777;
+  cursor: pointer; 
+}
+
+.block--full { width: 100%; }
+
+.pagination--bulma /deep/ .ngx-pagination {
+  li {
+    border-radius: 25%;
+  }
+  .current {
+    background: var(--teal);
+  }
+  .pagination-previous, .pagination-next {
+    border: 0;
+  }
+}
+
+.is-96x72 {
+  height: 72px;
+  width: 96px;
+}

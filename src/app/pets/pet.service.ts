@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class PetService {
   constructor(protected http: HttpClient) {}
-  public atxAACUrl = 'https://data.austintexas.gov/resource/hye6-gvq2.json?$limit=5&$offset=0';
+  public atxAACUrl = 'https://data.austintexas.gov/resource/hye6-gvq2.json?type=Cat';
 
   private handleError (error: any) {
     let errMsg = error.message || 'Server error';
@@ -17,7 +17,8 @@ export class PetService {
    }
 
   getPets(): Observable<any> {
-    return this.http.get(this.atxAACUrl)
+    //?$limit=15&$offset=0
+    return this.http.get(`${this.atxAACUrl}`)
        .catch(this.handleError);
   }
 }
