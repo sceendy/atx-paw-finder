@@ -15,6 +15,9 @@ import { PetService } from './pets/pet.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AgmCoreModule } from '@agm/core';
 
+// SECRET
+import { APIKEY } from './secret';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,7 @@ import { AgmCoreModule } from '@agm/core';
     HttpClientModule,
     NgxPaginationModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyADXe5_gSopqsoAva8mtLwSP9a7xB45dvk'
+      apiKey: APIKEY
     })
   ],
   providers: [PetService],
