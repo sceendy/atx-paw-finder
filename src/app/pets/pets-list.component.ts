@@ -8,11 +8,6 @@ import { PetService } from './pet.service';
   selector: 'pets-list',
   template: `
   <div class="map__list" *ngIf="pets">
-    <div *ngIf="pets.length <= 1" class="card">
-      <div class="card-content">
-        Whoops! Your search criteria might be too narrow. Try resetting the filter.
-      </div>
-    </div>
     <div class="card" 
       *ngFor="let pet of pets | paginate: { itemsPerPage: config.limit, currentPage: config.currentPage };" 
       (mouseover)="highlightPetLocation($event, pet.animal_id)">
@@ -40,10 +35,15 @@ import { PetService } from './pet.service';
               at shelter
             </span>
             <a class="tag is-warning" *ngIf="pet.at_aac.charAt(0) === 'N'" href="http://www.austintexas.gov/department/aac" target="_blank" rel="noopener">
-              contact us
+              contact the aac
             </a>
           </div>
         </div>
+      </div>
+    </div>
+    <div *ngIf="pets.length <= 1" class="card">
+      <div class="card-content">
+        Whoops! Your search criteria might be too narrow. Try resetting the filter.
       </div>
     </div>
 
@@ -76,6 +76,7 @@ export class PetsListComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(queryParams => {
+      /* TODO: include filter params in route */
       this.config.currentPage = queryParams.page;
     });
   }

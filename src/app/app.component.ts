@@ -75,6 +75,7 @@ export class AppComponent implements OnInit {
   }
 
   submitFilter(){
+    this.filterForm.controls['animal_id'].setValue('');
     this.renderPetList();
     this.router.navigate(['/'], { queryParams: { page: 1 } });
   }
