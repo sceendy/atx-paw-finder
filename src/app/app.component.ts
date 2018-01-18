@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { IPet } from './pets/pet.interface';
@@ -10,17 +11,20 @@ import { PetService } from './pets/pet.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Paw Finder';
-  filterForm: FormGroup;
-  pets: Array<Object>;
-  selectedPet: any;
-  locations: Array<any>;
-  loading: number = 5;
-  results: number;
-  filter: any;
-  currentLocation: any;
+  private title = 'Paw Finder';
+  private filterForm: FormGroup;
+  private loading: number = 5;
+  private results: number;
+  public pets: Array<Object>;
+  public selectedPet: any;
+  public locations: Array<any>; 
+  public filter: any;
 
-  constructor(public fb: FormBuilder, public petService: PetService) {
+  constructor(
+    public fb: FormBuilder,
+    public petService: PetService,
+    private router: Router
+  ) {
     this.filterForm = this.fb.group({
       'type': '',
       'sex': '',
@@ -59,7 +63,6 @@ export class AppComponent implements OnInit {
     this.locations = this.pets.map((pet: IPet) => {
       return ({ 
         id: pet.animal_id, 
-        /* TODO: get pet looks_like string to appear as label on marker hover */
         latitude: Number(pet.location.latitude), 
         longitude: Number(pet.location.longitude),
         typeUrl: pet.type == 'Dog' ? './assets/dog-shadow.svg' : './assets/cat-shadow.svg'
@@ -69,6 +72,11 @@ export class AppComponent implements OnInit {
 
   onSelected(id: any) {
     this.selectedPet = id;
+  }
+
+  submitFilter(){
+    this.renderPetList();
+    this.router.navigate(['/'], { queryParams: { page: 1 } });
   }
 
   clearFilter() {

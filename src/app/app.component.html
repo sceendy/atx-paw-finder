@@ -16,7 +16,7 @@
         <form 
         class="block--full"
         [formGroup]="filterForm"
-        (ngSubmit)="renderPetList()">
+        (ngSubmit)="submitFilter()">
           <div class="field">
             <label class="label" for="type">Type</label>
             <div class="control">
@@ -69,7 +69,10 @@
       </div>
       <p class="box has-text-centered">{{this.results}} Results Found <br/>for <strong>{{filter}}</strong></p>
     </div>
-    <p class="has-text-centered is-hidden-touch">&hearts; Made by <a href="https://www.sceendy.com" target="_blank" rel="noopener">Cindy</a></p>
+    <p class="has-text-centered is-hidden-touch">
+      <a href="https://sceendy.com/blog/2018-01-17-new-project-atx-pet-finder/" target="_blank">Blog post</a> | <a href="https://github.com/sceendy/atx-paw-finder" target="_blank" rel="noopener">View Code</a><br/>
+      &hearts; Made by <a href="https://www.sceendy.com" target="_blank">Cindy</a>
+    </p>
   </div>
   
   <div class="column is-half">

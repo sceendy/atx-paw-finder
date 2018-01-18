@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +19,17 @@ import { AgmCoreModule } from '@agm/core';
 // SECRET
 import { APIKEY } from './secret';
 
+const appRoutes: Routes = [
+  {
+    path: ':page',
+    component: AppComponent
+  },
+  { path: '',
+    component: AppComponent,
+    pathMatch: 'full'
+  }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +43,7 @@ import { APIKEY } from './secret';
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: APIKEY
     })

@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { IPet } from './pet.interface';
 import { PetService } from './pet.service';
@@ -6,14 +7,14 @@ import { PetService } from './pet.service';
 @Component({
   selector: 'pets-list',
   template: `
-  <div class="map__list">
-    <div *ngIf="pets.length === 0" class="card">
+  <div class="map__list" *ngIf="pets">
+    <div *ngIf="pets.length <= 1" class="card">
       <div class="card-content">
-        Whoops! There are no pets that meet that search criteria.
+        Whoops! Your search criteria might be too narrow. Try resetting the filter.
       </div>
     </div>
     <div class="card" 
-      *ngFor="let pet of pets | paginate: { itemsPerPage: 4, currentPage: p };" 
+      *ngFor="let pet of pets | paginate: { itemsPerPage: config.limit, currentPage: config.currentPage };" 
       (mouseover)="highlightPetLocation($event, pet.animal_id)">
       <div class="card-content">
         <div class="media">
@@ -45,9 +46,10 @@ import { PetService } from './pet.service';
         </div>
       </div>
     </div>
+
     <pagination-controls
-      *ngIf="pets.length > 4"
-      (pageChange)="p = $event" 
+      autoHide="true"
+      (pageChange)="goToPage($event)" 
       class="pagination--bulma"
       previousLabel=""
       nextLabel=""
@@ -56,13 +58,27 @@ import { PetService } from './pet.service';
   </div>
 `
 })
-export class PetsListComponent {
+export class PetsListComponent implements OnInit {
   selectedId: number;
-  p: number = 1;
+  params: Object;
+  config = {
+    currentPage: 1,
+    limit: 4
+  };
   @Input() pets: Array<IPet>;
   @Output() onSelected = new EventEmitter<number>();
 
-  constructor(private petService: PetService) {}
+  constructor(
+    private petService: PetService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(queryParams => {
+      this.config.currentPage = queryParams.page;
+    });
+  }
 
   toggleInfo(i: number) {
     if (this.pets[i].show) {
@@ -79,5 +95,11 @@ export class PetsListComponent {
       this.selectedId = id;
       this.onSelected.emit(id);
     }
+  }
+
+  goToPage(page: number){
+    this.config.currentPage = page;
+    this.params = { page: page };
+    this.router.navigate(['/'], { queryParams: this.params });
   }
 }
