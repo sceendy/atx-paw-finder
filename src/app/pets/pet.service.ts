@@ -18,7 +18,7 @@ export class PetService {
 
   getPets(filters: Object): Observable<any> {
     const filterString = Object.keys(filters)
-      .filter(k => filters[k] != '')
+      .filter(k => filters[k] !== '')
       .map(k => `${k}=${filters[k]}`)
       .join('&');
 
