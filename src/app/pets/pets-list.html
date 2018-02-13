@@ -1,12 +1,13 @@
 <div class="map__list" *ngIf="pets">
   <div class="card"
-    *ngFor="let pet of pets | paginate: { itemsPerPage: config.limit, currentPage: config.currentPage };"
-    (mouseover)="highlightPetLocation($event, pet.animal_id)">
+    *ngFor="let pet of pets | 
+      paginate: { itemsPerPage: config.limit, currentPage: config.currentPage };">
+      <!-- TODO: add hover (mouseover)="highlightPetLocation($event, pet.animal_id)" -->
     <div class="card-content">
       <div class="media">
         <div class="media-left">
           <figure class="image is-96x72">
-            <img src="http://petharbor.com/get_image.asp?RES=Detail&ID={{pet.animal_id}}&LOCATION=ASTN" alt="{{pet.type}}">
+            <img src="http://petharbor.com/get_image.asp?RES=Detail&ID={{pet.animal_id}}&LOCATION=ASTN" alt="{{pet.type}}" />
           </figure>
         </div>
         <div class="media-content">
@@ -14,12 +15,15 @@
           <div class="content is-small">
             Found at {{pet.location.human_address.address}} ({{pet.location.human_address.zip}})
             on {{pet.intake_date | date: 'MMM d'}}
-            <span class="has-text-info actionable__text"
-              (click)="selected = pet.animal_id">(view details)</span>
+            <span 
+              class="has-text-info actionable__text"
+              (click)="toggleInfo(pet.animal_id)">
+              ({{ selectedId === pet.animal_id ? 'Less' : 'View' }} details)
+            </span>
           </div>
         </div>
       </div>
-      <div class="content" *ngIf="selected === pet.animal_id">
+      <div class="content" *ngIf="selectedId === pet.animal_id">
         <div class="tags">
           <span class="tag">{{pet.type}}</span>
           <span class="tag">{{pet.color}}</span>
@@ -51,6 +55,5 @@
     class="pagination--bulma"
     previousLabel=""
     nextLabel=""
-  >
-  </pagination-controls>
+  ></pagination-controls>
 </div>

@@ -11,6 +11,7 @@ import { PetService } from './pet.service';
 
 export class PetsListComponent implements OnInit {
   selectedId: number;
+  toggleDetails: any;
   params: Object;
   config = {
     currentPage: 1,
@@ -27,16 +28,16 @@ export class PetsListComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(queryParams => {
-      /* TODO: include filter params in route */
       this.config.currentPage = queryParams.page;
     });
   }
 
-  toggleInfo(i: number) {
-    if (this.pets[i].show) {
-      return delete this.pets[i].show;
+  toggleInfo(id: number) {
+    if (this.selectedId === id ) {
+      this.selectedId = undefined;
+    } else {
+      this.selectedId = id;
     }
-    this.pets[i].show = true;
   }
 
   highlightPetLocation(e: Event, id: number) {
