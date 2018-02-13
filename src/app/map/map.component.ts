@@ -5,11 +5,11 @@ import * as styles from './map-style.json';
 @Component({
   selector: 'map',
   template: `
-  <agm-map 
-    [latitude]="lat" 
-    [longitude]="long" 
-    [zoom]="zoom" 
-    [disableDefaultUI]="true" 
+  <agm-map
+    [latitude]="lat"
+    [longitude]="long"
+    [zoom]="zoom"
+    [disableDefaultUI]="true"
     [styles]="mapStyles">
     <agm-marker
       *ngFor="let m of markers; let i = index"
@@ -18,10 +18,15 @@ import * as styles from './map-style.json';
       [iconUrl]="m.typeUrl"
       (markerClick)="getPet(m.id)">
     </agm-marker>
-    <agm-circle [latitude]="lat" [longitude]="long" [fillColor]="tomato"></agm-circle>
+    <agm-circle
+      [latitude]="lat"
+      [longitude]="long"
+      [fillColor]="tomato"
+    ></agm-circle>
   </agm-map>
   `
 })
+
 export class MapComponent implements OnInit {
   private lat = 30.307182; // atx
   private long = -97.755996; // atx
@@ -41,4 +46,5 @@ export class MapComponent implements OnInit {
   getPet(id: number) {
     this.onPetSelected.emit(id);
   }
+// tslint:disable-next-line:eofline
 }

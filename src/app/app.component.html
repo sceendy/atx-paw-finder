@@ -67,7 +67,7 @@
           </div>
         </form>
       </div>
-      <p class="box has-text-centered">{{this.results}} Results Found <br/>for <strong>{{filter}}</strong></p>
+      <p class="box has-text-centered">{{results}} Results Found <br/>for <strong>{{filter}}</strong></p>
     </div>
     <div class="has-text-centered is-hidden-touch">
       <a href="https://sceendy.com/blog/2018-01-17-new-project-atx-pet-finder/" target="_blank">Blog post</a> | <a href="https://github.com/sceendy/atx-paw-finder" target="_blank" rel="noopener">View Code</a><br/>
@@ -83,7 +83,11 @@
       max="100">
       {{loading}}%
     </progress>
-    <map *ngIf="locations" [markers]="locations" [selected]="selectedPet" (onPetSelected)="getPet($event)">
+    <map 
+      *ngIf="locations" 
+      [markers]="locations" 
+      [selected]="selectedPet" 
+      (onPetSelected)="getPet($event)">
       Loading Map...
     </map>
   </div>

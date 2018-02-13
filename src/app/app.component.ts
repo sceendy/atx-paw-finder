@@ -10,14 +10,15 @@ import { PetService } from './pets/pet.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
   private title = 'Paw Finder';
   private filterForm: FormGroup;
-  private loading: number = 5;
+  private loading: number;
   private results: number;
   public pets: Array<Object>;
   public selectedPet: any;
-  public locations: Array<any>; 
+  public locations: Array<any>;
   public filter: any;
 
   constructor(
@@ -45,7 +46,9 @@ export class AppComponent implements OnInit {
       this.loading = 75;
       this.results = pets.length;
       this.filter = (() => {
-        let values = Object.values(this.filterForm.value).filter(v => v.length > 0).map(v => v.replace(/\+/g, ' '));
+        const values = Object.values(this.filterForm.value)
+          .filter(v => v.length > 0)
+          .map(v => v.replace(/\+/g, ' '));
         if (values.length >= 1) {
           return values
             .reverse()
@@ -61,12 +64,12 @@ export class AppComponent implements OnInit {
   setMapMarkers() {
     this.loading = 0;
     this.locations = this.pets.map((pet: IPet) => {
-      return ({ 
-        id: pet.animal_id, 
-        latitude: Number(pet.location.latitude), 
+      return ({
+        id: pet.animal_id,
+        latitude: Number(pet.location.latitude),
         longitude: Number(pet.location.longitude),
-        typeUrl: pet.type == 'Dog' ? './assets/dog-shadow.svg' : './assets/cat-shadow.svg'
-      })
+        typeUrl: pet.type === 'Dog' ? './assets/dog-shadow.svg' : './assets/cat-shadow.svg'
+      });
     });
   }
 
@@ -74,7 +77,7 @@ export class AppComponent implements OnInit {
     this.selectedPet = id;
   }
 
-  submitFilter(){
+  submitFilter() {
     this.filterForm.controls['animal_id'].setValue('');
     this.renderPetList();
     this.router.navigate(['/'], { queryParams: { page: 1 } });

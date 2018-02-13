@@ -11,18 +11,19 @@ export class PetService {
   public atxAACUrl = 'https://data.austintexas.gov/resource/hye6-gvq2.json';
 
   private handleError (error: any) {
-    let errMsg = error.message || 'Server error';
+    const errMsg = error.message || 'Server error';
     console.error(errMsg);
     return Observable.throw(errMsg);
-   }
+  }
 
   getPets(filters: Object): Observable<any> {
-    let filterString = Object.keys(filters)
+    const filterString = Object.keys(filters)
       .filter(k => filters[k] != '')
       .map(k => `${k}=${filters[k]}`)
       .join('&');
-    
+
     return this.http.get(`${this.atxAACUrl}?${filterString ? filterString : ''}`)
        .catch(this.handleError);
   }
+// tslint:disable-next-line:eofline
 }
