@@ -1,7 +1,5 @@
 // VARIABLES
-:root {
-  --teal: #00d1b2;
-}
+:root {  --teal: #00d1b2; }
 
 // BASE 
 html, body { height: 100vh; }
@@ -24,7 +22,6 @@ agm-map { height: 85vh; }
   color: #777;
   cursor: pointer; 
 }
-
 
 // UTILITIES
 .block--full { width: 100%; }

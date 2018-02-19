@@ -57,6 +57,7 @@ export class AppComponent implements OnInit {
         const values = Object.values(this.filterForm.value)
           .filter(v => v.length > 0)
           .map(v => v.replace(/\+/g, ' '));
+
         if (values.length >= 1) {
           return values
             .reverse()
@@ -107,6 +108,9 @@ export class AppComponent implements OnInit {
       'animal_id': ''
     });
     this.renderPetList();
+    this.router.navigate(['/'], {
+      queryParams: { page: 1 }
+    });
   }
 
   updateType(type: string) {
