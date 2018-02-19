@@ -27,12 +27,13 @@ export class PetsListComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(queryParams => {
       this.config.currentPage = queryParams.page;
+      this.params = queryParams;
     });
   }
 
   goToPage(page: number) {
     this.config.currentPage = page;
-    this.params = { page: page };
+    this.params = { ...this.params, page: page };
     this.router.navigate(['/'], { queryParams: this.params });
   }
 }

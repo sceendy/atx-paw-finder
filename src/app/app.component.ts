@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Http } from '@angular/http';
 
 import { IPet } from './pets/pet.interface';
 import { PetService } from './pets/pet.service';
@@ -25,7 +24,6 @@ export class AppComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     public petService: PetService,
-    private http: Http,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -39,14 +37,17 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.loading = 25;
     this.route.queryParams.subscribe((queryParams: Params) => {
-      if (queryParams.sex || queryParams.type) {
+      if (queryParams.sex) {
         this.filterForm.controls['sex'].setValue(queryParams.sex);
+      }
+      if (queryParams.type) {
         this.filterForm.controls['type'].setValue(queryParams.type);
       }
-      if (queryParams.page) {
-        return;
-      }
-      this.renderPetList();
+
+      /* FIXME: runs during every page change... 
+      // need to fix to reduce all the API calls
+      */
+      if (queryParams && !this.pets) this.renderPetList(); 
     });
   }
 
@@ -59,7 +60,7 @@ export class AppComponent implements OnInit {
       this.results = pets.length;
       this.filter = (() => {
         const values = Object.values(this.filterForm.value)
-          .filter(v => v.length > 0)
+          .filter(v => typeof v !== 'undefined' && v.length !== 0)
           .map(v => v.replace(/\+/g, ' '));
 
         if (values.length >= 1) {
@@ -113,9 +114,7 @@ export class AppComponent implements OnInit {
       'animal_id': ''
     });
     this.renderPetList();
-    this.router.navigate(['/'], {
-      queryParams: { page: 1 }
-    });
+    this.router.navigate(['/'], { queryParams: { page: 1 } });
   }
 
   updateType(type: string) {

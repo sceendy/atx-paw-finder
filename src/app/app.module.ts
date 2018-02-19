@@ -25,8 +25,9 @@ const appRoutes: Routes = [
     path: ':page',
     component: AppComponent
   },
-  { path: '',
-    component: AppComponent,
+  { 
+    path: '',
+    redirectTo: '?page=1',
     pathMatch: 'full'
   }
 ];
