@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Http } from '@angular/http';
 
 import { IPet } from './pets/pet.interface';
 import { PetService } from './pets/pet.service';
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     public petService: PetService,
+    private http: Http,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -124,4 +126,13 @@ export class AppComponent implements OnInit {
     this.filterForm.controls['animal_id'].setValue(id);
     this.renderPetList();
   }
+
+  /* TODO: Need to look into API more to figure out possible proximity filter */
+  // getCurrentLocation() {
+  //   if ('geolocation' in navigator) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.http.get(`https://data.austintexas.gov/resource/hye6-gvq2.json?$where=within_circle(location,${position.coords.latitude},${position.coords.longitude},500)`).subscribe(data => console.log(data));
+  //     });
+  //   }
+  // }
 }
