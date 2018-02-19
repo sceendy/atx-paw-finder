@@ -30,9 +30,10 @@ agm-map { height: 85vh; }
 
 .floating--centered {
   position: absolute;
-  top: 50vh;
+  top: 47vh;
   z-index: 1;
-  max-width: 49vw;
+  max-width: 47vw;
+  left: 22px;
 }
 
 // VENDOR OVERRIDES

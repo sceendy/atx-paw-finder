@@ -41,13 +41,15 @@ export class AppComponent implements OnInit {
         this.filterForm.controls['sex'].setValue(queryParams.sex);
         this.filterForm.controls['type'].setValue(queryParams.type);
       }
+      if (queryParams.page > 1) {
+        return;
+      }
       this.renderPetList();
     });
   }
 
   renderPetList() {
     this.loading = 50;
-    console.log(this.filterForm.value);
     this.petService.getPets(this.filterForm.value).subscribe((pets: IPet[]) => {
       pets.forEach((pet: IPet) => pet.location.human_address = JSON.parse(pet.location.human_address));
       this.pets = pets;
@@ -66,6 +68,7 @@ export class AppComponent implements OnInit {
           return 'all';
         }
       })();
+
       this.setMapMarkers();
     });
   }

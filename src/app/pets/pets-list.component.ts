@@ -10,10 +10,10 @@ import { PetService } from './pet.service';
 })
 
 export class PetsListComponent implements OnInit {
-  selectedId: number;
-  toggleDetails: any;
-  params: Object;
-  config = {
+  public selectedId: number;
+  private toggleDetails: any;
+  private params: Object;
+  private config = {
     currentPage: 1,
     limit: 4
   };
