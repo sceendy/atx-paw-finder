@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { IPet } from './pet.interface';
@@ -9,12 +9,13 @@ import { PetService } from './pet.service';
   templateUrl: './pets-list.html'
 })
 
-export class PetsListComponent implements OnInit {
+export class PetsListComponent implements OnInit, OnDestroy {
   private params: Object;
   private config = {
     currentPage: 1,
     limit: 4
   };
+  public paramsSubs: any;
   @Input() pets: Array<IPet>;
   @Output() onSelected = new EventEmitter<number>();
 
@@ -25,15 +26,22 @@ export class PetsListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(queryParams => {
+    this.paramsSubs = this.route.queryParams.subscribe(queryParams => {
       this.config.currentPage = queryParams.page;
       this.params = queryParams;
     });
   }
 
+  ngOnDestroy() {
+    this.paramsSubs.unsubscribe();
+  }
+
   goToPage(page: number) {
     this.config.currentPage = page;
-    this.params = { ...this.params, page: page };
-    this.router.navigate(['/'], { queryParams: this.params });
+    this.params = { page };
+    this.router.navigate(['/'], { 
+      queryParams: this.params,
+      queryParamsHandling: 'merge'
+    });
   }
 }
