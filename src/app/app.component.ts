@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
         this.filterForm.controls['sex'].setValue(queryParams.sex);
         this.filterForm.controls['type'].setValue(queryParams.type);
       }
-      if (queryParams.page > 1) {
+      if (queryParams.page) {
         return;
       }
       this.renderPetList();

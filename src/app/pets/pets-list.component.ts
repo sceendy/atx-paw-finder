@@ -10,8 +10,6 @@ import { PetService } from './pet.service';
 })
 
 export class PetsListComponent implements OnInit {
-  public selectedId: number;
-  private toggleDetails: any;
   private params: Object;
   private config = {
     currentPage: 1,
@@ -30,25 +28,6 @@ export class PetsListComponent implements OnInit {
     this.route.queryParams.subscribe(queryParams => {
       this.config.currentPage = queryParams.page;
     });
-  }
-
-  toggleInfo(id: number) {
-    if (this.selectedId === id ) {
-      this.selectedId = undefined;
-    } else {
-      this.selectedId = id;
-    }
-  }
-
-  highlightPetLocation(e: Event, id: number) {
-    e.stopPropagation();
-    e.preventDefault();
-    if (id === this.selectedId) {
-      return;
-    } else {
-      this.selectedId = id;
-      this.onSelected.emit(id);
-    }
   }
 
   goToPage(page: number) {
