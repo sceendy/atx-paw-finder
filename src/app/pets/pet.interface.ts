@@ -1,7 +1,7 @@
 export interface IPet {
-  age: string,
+  age: string;
   animal_id: string;
-  color: string,
+  color: string;
   intake_date: string;
   looks_like: string;
   type: string;
@@ -11,4 +11,5 @@ export interface IPet {
     human_address: string // api sends it as string, should be object though
   };
   show: boolean;
+// tslint:disable-next-line:eofline
 }

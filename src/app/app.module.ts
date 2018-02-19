@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PetsListComponent } from './pets/pets-list.component';
+import { PetCardComponent } from './pets/pet-card';
 import { MapComponent } from './map/map.component';
 
 import { PetService } from './pets/pet.service';
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     MapComponent,
-    PetsListComponent
+    PetsListComponent,
+    PetCardComponent
   ],
   imports: [
     BrowserModule,
