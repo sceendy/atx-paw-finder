@@ -44,9 +44,6 @@ export class AppComponent implements OnInit {
         this.filterForm.controls['type'].setValue(queryParams.type);
       }
 
-      /* FIXME: runs during every page change... 
-      // need to fix to reduce all the API calls
-      */
       if (queryParams && !this.pets) this.renderPetList(); 
     });
   }
@@ -60,8 +57,8 @@ export class AppComponent implements OnInit {
       this.results = pets.length;
       this.filter = (() => {
         const values = Object.values(this.filterForm.value)
-          .filter(v => typeof v !== 'undefined' && v.length !== 0)
-          .map(v => v.replace(/\+/g, ' '));
+          .filter((v:any) => typeof v !== 'undefined' && v.length !== 0)
+          .map((v:any) => v.replace(/\+/g, ' '));
 
         if (values.length >= 1) {
           return values

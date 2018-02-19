@@ -8,28 +8,24 @@ import { IPet } from '../pet.interface';
 })
 
 export class PetCardComponent {
-  public selectedId: number;
-  @Output() onSelected = new EventEmitter<number>();
+  @Input() selectedId;
+  @Output() toggledInfo = new EventEmitter<number>();
   @Input() pet: IPet;
 
   constructor() {}
 
-  toggleInfo(id: number) {
-    if (this.selectedId === id ) {
-      this.selectedId = undefined;
-    } else {
-      this.selectedId = id;
-    }
+  toggle(id: number) {
+    this.toggledInfo.emit(id); 
   }
 
-  highlightPetLocation(e: Event, id: number) {
-    e.stopPropagation();
-    e.preventDefault();
-    if (id === this.selectedId) {
-      return;
-    } else {
-      this.selectedId = id;
-      this.onSelected.emit(id);
-    }
-  }
+  // highlightPetLocation(e: Event, id: number) {
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  //   if (id === this.selectedId) {
+  //     return;
+  //   } else {
+  //     this.selectedId = id;
+  //     this.onSelected.emit(id);
+  //   }
+  // }
 }
