@@ -17,7 +17,7 @@ export class PetsListComponent implements OnInit, OnDestroy {
   };
   public paramsSubs: any;
   @Input() pets: Array<IPet>;
-  @Output() onSelected = new EventEmitter<number>();
+  @Input() onSelected = new EventEmitter<number>();
 
   constructor(
     private petService: PetService,

@@ -7,12 +7,13 @@
     </div>
     <div class="media-content">
       <strong>{{pet.looks_like}}</strong>
+      {{selectedId}} - {{pet.animal_id}}
       <div class="content is-small">
         Found at {{pet.location.human_address.address}} ({{pet.location.human_address.zip}})
         on {{pet.intake_date | date: 'MMM d'}}
         <span 
           class="has-text-info actionable__text"
-          (click)="toggleInfo(pet.animal_id)">
+          (click)="toggle(pet.animal_id)">
           ({{ selectedId === pet.animal_id ? 'Less' : 'View' }} details)
         </span>
       </div>

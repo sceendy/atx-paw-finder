@@ -3,7 +3,7 @@
     *ngFor="let pet of pets | 
       paginate: { itemsPerPage: config.limit, currentPage: config.currentPage };">
       <!-- TODO: add hover (mouseover)="highlightPetLocation($event, pet.animal_id)" -->
-    <pet-card [pet]="pet"></pet-card>
+    <pet-card [pet]="pet" (toggledInfo)="selectedId = $event" [selectedId]="selectedId"></pet-card>
   </div>
   <div *ngIf="pets.length <= 1" class="card">
     <div class="card-content">
