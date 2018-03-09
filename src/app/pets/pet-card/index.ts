@@ -15,7 +15,7 @@ export class PetCardComponent {
   constructor() {}
 
   toggle(id: number) {
-    this.toggledInfo.emit(id); 
+    this.toggledInfo.emit(this.selectedId === id ? 0 : id); 
   }
 
   // highlightPetLocation(e: Event, id: number) {

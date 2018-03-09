@@ -2,7 +2,12 @@
   <div class="media">
     <div class="media-left">
       <figure class="image is-96x72">
-        <img src="http://petharbor.com/get_image.asp?RES=Detail&ID={{pet.animal_id}}&LOCATION=ASTN" alt="{{pet.type}}" />
+        <!-- TODO: add modal -->
+        <a href="http://petharbor.com/get_image.asp?RES=Detail&ID={{pet.animal_id}}&LOCATION=ASTN" rel="noopener" target="_blank">
+          <img 
+            src="http://petharbor.com/get_image.asp?RES=Detail&ID={{pet.animal_id}}&LOCATION=ASTN" 
+            alt="{{pet.type}}" />
+          </a>
       </figure>
     </div>
     <div class="media-content">

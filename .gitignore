@@ -32,6 +32,7 @@ secret.ts
 npm-debug.log
 testem.log
 /typings
+secret.no
 
 # e2e
 /e2e/*.js
