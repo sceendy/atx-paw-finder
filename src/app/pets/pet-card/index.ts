@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
+import { ModalComponent } from '../../components/modal';
+
 import { IPet } from '../pet.interface';
 
 @Component({
@@ -11,6 +13,7 @@ export class PetCardComponent {
   @Input() selectedId;
   @Output() toggledInfo = new EventEmitter<number>();
   @Input() pet: IPet;
+  public toggleMenu: boolean = false;
 
   constructor() {}
 

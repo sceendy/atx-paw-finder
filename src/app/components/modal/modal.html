@@ -1,0 +1,9 @@
+<div class="modal" [ngClass]="{'is-active': show }">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <p class="image is-4by3">
+      <img src="http://petharbor.com/get_image.asp?RES=Detail&ID={{petId}}&LOCATION=ASTN" />
+    </p>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeModal()"></button>
+</div>

@@ -23,6 +23,11 @@ agm-map { height: 85vh; }
   cursor: pointer; 
 }
 
+.thumbnail__img:hover {
+  opacity: .65;
+  cursor: pointer;
+}
+
 // UTILITIES
 .block--full { width: 100%; }
 .radio--selected { background-color: #ffdd57; }

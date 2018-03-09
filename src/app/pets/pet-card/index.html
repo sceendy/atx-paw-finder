@@ -1,13 +1,11 @@
 <div class="card-content">
+  <app-modal [petId]="pet.animal_id" [show]="showModal" (close)="showModal = !showModal"></app-modal>
   <div class="media">
     <div class="media-left">
       <figure class="image is-96x72">
-        <!-- TODO: add modal -->
-        <a href="http://petharbor.com/get_image.asp?RES=Detail&ID={{pet.animal_id}}&LOCATION=ASTN" rel="noopener" target="_blank">
-          <img 
-            src="http://petharbor.com/get_image.asp?RES=Detail&ID={{pet.animal_id}}&LOCATION=ASTN" 
-            alt="{{pet.type}}" />
-          </a>
+        <img 
+          src="http://petharbor.com/get_image.asp?RES=Detail&ID={{pet.animal_id}}&LOCATION=ASTN" 
+          alt="{{pet.type}}" (click)="showModal = true" class="thumbnail__img"/>
       </figure>
     </div>
     <div class="media-content">

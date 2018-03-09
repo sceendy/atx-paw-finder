@@ -11,6 +11,8 @@ import { PetsListComponent } from './pets/pets-list.component';
 import { PetCardComponent } from './pets/pet-card';
 import { MapComponent } from './map/map.component';
 
+import { ModalComponent } from './components/modal';
+
 import { PetService } from './pets/pet.service';
 
 // VENDOR
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
     AppComponent,
     MapComponent,
     PetsListComponent,
-    PetCardComponent
+    PetCardComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
