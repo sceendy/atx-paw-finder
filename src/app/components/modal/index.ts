@@ -13,6 +13,6 @@ export class ModalComponent {
   constructor() {}
 
   closeModal() {
-    this.close.emit(true);
+    this.close.emit();
   }
 }
